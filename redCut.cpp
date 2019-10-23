@@ -14,10 +14,10 @@ int memoizedCutRodAux(int p[], int n, int r[]){
     if (n == 0) q = 0; 
     else {
         q = -1000;
-        for (int i = 1; i<= n; i++){
+        for (int i = 0; i< n; i++){
             //cout<<"valor q: "<<q<<"\n";
             //cout<<"valor pi + MCRA "<<p[i] + memoizedCutRodAux(p, n-i, r)<<"\n";            
-            q = max(q, p[i] + memoizedCutRodAux(p, n-i, r));
+            q = max(q, p[i] + memoizedCutRodAux(p, n-i-1, r));
             
         }
     }
@@ -40,10 +40,10 @@ int main(){
     //int i[] = {1,2,3,4,5,6,7,8,9,10};       //longitud
     int pi[] = {1,5,8,9,10,17,17,20,24,30}; //precios
     int n = 4;
-    int r[n];
+    int r[n+1];
     
-    memoizedCutRod(pi, n-1, r);
-    for (int j = 0; j <= n-1; j++){
+    cout<<"Max: "<<memoizedCutRod(pi, n, r)<<endl;
+    for (int j = 0; j <= n; j++){
         cout<<r[j]<<endl;
     }
     return 0;
